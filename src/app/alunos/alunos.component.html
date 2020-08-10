@@ -1,0 +1,76 @@
+<div class="row p-3">
+
+    <div [ngClass]="{'col-md-8': alunoSelecionado, 'col-md-12': !alunoSelecionado}" style="padding-right: 40px;">
+
+        <div class="row">
+            <div class="col-md-6">
+                <app-titulo [titulo]="titulo"></app-titulo>
+            </div>
+            <div class="col-md-6" style="text-align: end;">
+                <button class="btn btn-sm btn-primary ml-2 mb-2" routerLink="criar">Cadastrar Aluno</button>
+            </div>
+        </div>
+
+        <div>
+            <table class="table table-hover">
+                <thead class="thead-ligth">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let aluno of alunos" style="cursor: pointer;">
+                        <th scope="row">{{aluno.id}}</th>
+                        <td>{{aluno.nome}}</td>
+                        <td>{{aluno.sobrenome}}</td>
+                        <td>{{aluno.telefone}}</td>
+                        <td>
+                            <button class="btn btn-warning" (click)="alunoSelect(aluno)">
+                                <i class="fas fa-address-card text-light"></i>
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-user-edit"></i>
+                            </button>
+                            <button class="btn btn-danger">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-4 p-2" *ngIf="alunoSelecionado">
+        <div class="row">
+            <div class="mr-auto">
+                <app-titulo [titulo]=" 'Cod. ' + alunoSelecionado.id "> </app-titulo>
+            </div>
+            <div class="mt-3">
+                <button class="btn btn-sm btn-outline-danger" (click)="voltarSelecao()"
+                    style="margin-right: 14px;">Voltar</button>
+            </div>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nome</label>
+                <input type="text" class="form-control" value="{{alunoSelecionado.nome}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Sobrenome</label>
+                <input type="text" class="form-control" value="{{alunoSelecionado.sobrenome}}">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Telefone</label>
+                <input type="number" class="form-control" value="{{alunoSelecionado.telefone}}">
+            </div>
+        </form>
+    </div>
+
+</div>
