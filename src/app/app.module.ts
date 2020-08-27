@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 //Para usar o Dropdown
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -33,11 +33,12 @@ import { AlunoService } from './server/aluno.service';
    ],
    imports: [
    BrowserModule,
-      HttpClientModule,
-      AppRoutingModule,
-      BsDropdownModule.forRoot(),
-      BrowserAnimationsModule,
-      FormsModule
+   HttpClientModule,
+   AppRoutingModule,
+   BsDropdownModule.forRoot(),
+   BrowserAnimationsModule,
+   FormsModule,
+   ReactiveFormsModule
    ],
    providers: [HttpClientModule, AlunoService],
    bootstrap: [AppComponent]

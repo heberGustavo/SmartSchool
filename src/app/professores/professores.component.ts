@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Professor } from './../models/Professor';
+import { ProfessorService } from '../server/professor.service';
+
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-professores',
@@ -10,15 +13,42 @@ export class ProfessoresComponent implements OnInit {
 
   titulo = 'Professores';
   professorSelecionado: Professor;
+  
+  id: string;
+  professores: Array<any> = new Array();
 
-  professores = [
-    { id: 1, nome: 'Lucio', disciplina: 'Matematica' },
-    { id: 2, nome: 'Amaral', disciplina: 'Portugues' },
-    { id: 3, nome: 'Ronaldo', disciplina: 'Geografia' },
-    { id: 4, nome: 'Zlatan', disciplina: 'História' },
-    { id: 5, nome: 'Gatuzzo', disciplina: 'Geometria' },
-    { id: 6, nome: 'Robson', disciplina: 'Sociologia' },
-  ];
+  constructor(private professorService: ProfessorService) { 
+
+  }
+
+  ngOnInit() {
+  }
+
+  listarProduto() {
+    this.professorService.obterProfessores().subscribe(professores => {
+      this.professorSelecionado = professores;
+    }, err => {
+      console.log("Erro ao listar alunos", err)
+    });
+  }
+
+  // deletarAluno(id: string){
+  //   console.log(id);
+  //   this.alunoService.deleteProduto(id).subscribe(aluno => {
+  //     this.mensagemDeSucessoDeExclusao();
+  //     this.listarProduto();
+  //   }, err => {
+  //     console.log("Erro ao excluir aluno", err)
+  //   });
+  // }
+
+  // mensagemDeSucessoDeExclusao(){
+  //   swal.fire({
+  //     icon: 'success',
+  //     title: 'Sucesso',
+  //     text: 'Aluno excluido com sucesso!'
+  //   });
+  // }
 
   professorSelect(professor: Professor) {
     this.professorSelecionado = professor;
@@ -27,11 +57,5 @@ export class ProfessoresComponent implements OnInit {
   voltarSelecao() {
     this.professorSelecionado = null;
   }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 
 }

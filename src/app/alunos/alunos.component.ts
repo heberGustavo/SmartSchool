@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Aluno } from './../models/Aluno';
 import { AlunoService } from '../server/aluno.service';
 
+import swal from 'sweetalert2';
+
 @Component({
   selector: 'app-alunos',
   templateUrl: './alunos.component.html',
@@ -26,6 +28,24 @@ export class AlunosComponent implements OnInit {
       this.alunos = alunos;
     }, err => {
       console.log("Erro ao listar alunos", err)
+    });
+  }
+
+  deletarAluno(id: string){
+    console.log(id);
+    this.alunoService.deleteProduto(id).subscribe(aluno => {
+      this.mensagemDeSucessoDeExclusao();
+      this.listarProduto();
+    }, err => {
+      console.log("Erro ao excluir aluno", err)
+    });
+  }
+
+  mensagemDeSucessoDeExclusao(){
+    swal.fire({
+      icon: 'success',
+      title: 'Sucesso',
+      text: 'Aluno excluido com sucesso!'
     });
   }
 

@@ -10,7 +10,7 @@ export class AlunoService {
 
   constructor(private http: HttpClient) { }
 
-  private url = "https://construtoraimperialsp.com.br/teste_api";
+  private url = "https://construtoraimperialsp.com.br/teste_api/Aluno";
 
   //Chama e espera o retorno
   obterProdutos(): Observable<any> {
@@ -36,8 +36,7 @@ export class AlunoService {
     try {
       const _url = `${this.url}/Excluir.php?id=${id}`;
 
-      console.log(_url);
-      return this.http.delete<any>(_url);
+      return this.http.put<any>(_url, id);
 
     } catch (error) {
       console.log(error);
