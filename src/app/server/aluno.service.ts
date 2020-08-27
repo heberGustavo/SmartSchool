@@ -17,19 +17,9 @@ export class AlunoService {
     return this.http.get<any>(`${this.url}/ListarTodosDados.php`);
   }
 
-  obterUsuarioPorId(id) {
-    return this.http.get<any>(`${this.url}/ListarPorId.php?id=${6}`);
-  }
-
   criarProduto(aluno: Aluno): Observable<any> {
     const _url = `${this.url}/Adicionar.php`;
     return this.http.post(_url, aluno);
-  }
-
-  atualizarProduto(id: string, request: Aluno): Observable<Aluno> {
-    const _url = `${this.url}/Editar.php?id=${id}`;
-    console.log(request);
-    return this.http.put<Aluno>(_url, request);
   }
 
   deleteProduto(id: string) {

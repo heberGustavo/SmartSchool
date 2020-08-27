@@ -19,6 +19,7 @@ import { TituloComponent } from './titulo/titulo.component';
 
 //Server
 import { AlunoService } from './server/aluno.service';
+import { ProfessorCriarComponent } from './professores/professor-criar/professor-criar.component';
 
 @NgModule({
    declarations: [
@@ -29,7 +30,8 @@ import { AlunoService } from './server/aluno.service';
       PerfilComponent,
       DashboardComponent,
       NavComponent,
-      TituloComponent
+      TituloComponent,
+      ProfessorCriarComponent
    ],
    imports: [
    BrowserModule,

@@ -17,38 +17,38 @@ export class ProfessoresComponent implements OnInit {
   id: string;
   professores: Array<any> = new Array();
 
-  constructor(private professorService: ProfessorService) { 
-
-  }
+  constructor(private professorService: ProfessorService) { }
 
   ngOnInit() {
+    this.listarProduto();
   }
 
   listarProduto() {
     this.professorService.obterProfessores().subscribe(professores => {
-      this.professorSelecionado = professores;
+      this.professores = professores;
+      console.log(professores)
     }, err => {
       console.log("Erro ao listar alunos", err)
     });
   }
 
-  // deletarAluno(id: string){
-  //   console.log(id);
-  //   this.alunoService.deleteProduto(id).subscribe(aluno => {
-  //     this.mensagemDeSucessoDeExclusao();
-  //     this.listarProduto();
-  //   }, err => {
-  //     console.log("Erro ao excluir aluno", err)
-  //   });
-  // }
+  deletarProfessor(id: string){
+    console.log(id);
+    this.professorService.deleteProfessor(id).subscribe(professor => {
+      this.mensagemDeSucessoDeExclusao();
+      this.listarProduto();
+    }, err => {
+      console.log("Erro ao excluir professor", err)
+    });
+  }
 
-  // mensagemDeSucessoDeExclusao(){
-  //   swal.fire({
-  //     icon: 'success',
-  //     title: 'Sucesso',
-  //     text: 'Aluno excluido com sucesso!'
-  //   });
-  // }
+  mensagemDeSucessoDeExclusao(){
+    swal.fire({
+      icon: 'success',
+      title: 'Sucesso',
+      text: 'Professor excluido com sucesso!'
+    });
+  }
 
   professorSelect(professor: Professor) {
     this.professorSelecionado = professor;
