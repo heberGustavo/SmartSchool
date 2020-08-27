@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Professor } from '../models/Professor';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,10 @@ export class ProfessorService {
     return this.http.get<any>(`${this.url}/ListarTodosDados.php`);
   }
 
-  // criarProduto(aluno: Aluno): Observable<any> {
-  //   const _url = `${this.url}/Adicionar.php`;
-  //   return this.http.post(_url, aluno);
-  // }
+  criarProfessor(professor: Professor): Observable<any> {
+    const _url = `${this.url}/Adicionar.php`;
+    return this.http.post(_url, professor);
+  }
 
   deleteProfessor(id: string) {
     try {

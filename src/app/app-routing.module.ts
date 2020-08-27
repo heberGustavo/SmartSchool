@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfessoresComponent } from './professores/professores.component';
+import { ProfessorCriarComponent } from './professores/professor-criar/professor-criar.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { AlunoCriarComponent } from './alunos/aluno-criar/aluno-criar.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'alunos/criar', component: AlunoCriarComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'professores', component: ProfessoresComponent },
+  { path: 'professores/criar', component: ProfessorCriarComponent }
 ];
 
 @NgModule({
